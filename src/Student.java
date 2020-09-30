@@ -22,15 +22,11 @@ public class Student {
 	public Student() {};
 	
 	
-	//Student Id can be set retrieved if not set as default when Student object was created
-	private void setId(String id) {
-		this.id = id;
+	public void DisplayId() {
+		System.out.println(this.id);
 	}
 		
-	
-	public String getId () {
-		return this.id;
-	}
+
 	
 	
 	
@@ -41,6 +37,13 @@ public class Student {
 		System.out.println("Answer has been recorded and submitted");
 		
 	}
+	
+	
+	
+	public List<Answers> getSingleStudentAnswers(){
+		return StudentAnswers;
+	}
+	
 	
 	public void Submit_Multiple(List<List<Answers>> a2) {
 		this.StudentAnswers2 =a2;

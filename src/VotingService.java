@@ -26,9 +26,9 @@ public void Display_Multiple(Multiple q2)
 }
 
 
-public void UserSingleChoice(Answers a1)
+public static boolean UserSingleCompare(String A, String B)
 {
-	this.answer_type1 = a1;
+	return A.charAt(0) == B.charAt(0);
 }
 
 public void UserMultipleChoice(Answers a2)

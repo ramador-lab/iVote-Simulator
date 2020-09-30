@@ -31,7 +31,7 @@ public class SimulationDriver {
 		
 		
 		List<Question>SingleAnswerQuestion = new ArrayList();
-		List<Question>MultipleAnsawerQuestion = new ArrayList();
+		List<Question>MultipleAnswerQuestion = new ArrayList();
 		List<Answers>AnswerChoices = new ArrayList();
 
 		
@@ -67,15 +67,25 @@ public class SimulationDriver {
 		
 		answer_q2.answer_choices(possible_answers_two);
 		AnswerChoices.add(answer_q2);
+		answer_q1.correct_single("A");
 		
 		
+		int CorrectAnswers = 0;
+		int Total = SingleAnswerQuestion.size() + MultipleAnswerQuestion.size();
 		
 	
 		for (int i = 0; i < SingleAnswerQuestion.size(); i++ )
 		{
 			if(i == 0) {
+			
+			System.out.println("Student: ");
+			student1.DisplayId();
+				
+			System.out.println("--------------------------------------------------------------------------------------");	
 				
 			System.out.println("\nPlease Submit Answer Choice As Capital Letter");
+			
+			
 			};
 			Game1.Display_Single(SingleAnswerQuestion.get(i));
 			
@@ -85,14 +95,31 @@ public class SimulationDriver {
 			
 			System.out.println("Submit Answer: ");
 			String givenAnswer = myObj.nextLine();
-			Answers temp = (Answers) givenAnswer;
+		
+			Answers temp = new Answers();
+			temp.UserInput(givenAnswer);
 			student1.Submit_Answer(temp);
+			boolean test = Game1.UserSingleCompare(givenAnswer, AnswerChoices.get(i).getSingleAnswer());
+			System.out.println(test);
+			
+			if(givenAnswer ==AnswerChoices.get(i).getSingleAnswer());
+			{
+				CorrectAnswers++;
+				System.out.println("Correct!");
+				System.out.println("");
+			}
+			
+			
 			System.out.println(" ");
 			System.out.println("--------------------------------------------------------------------------------------");
 			
 			
 			
 		}
+		
+		double score = (CorrectAnswers/Total)*100;
+		
+		System.out.println("Score: " + score + "%");
 		
 	}
 

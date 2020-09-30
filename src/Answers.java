@@ -2,6 +2,9 @@
 import java.util.*;
 
 public class Answers {
+	
+	public Answers() {};
+	
 	//Answer Choices provided to for the user
 	private List <String> repository = new ArrayList<String>();
 	
@@ -37,10 +40,23 @@ public class Answers {
 	}
 	
 	
+	
+	public void UserInput(String a) {
+		this.user_single = a;
+	}
+	
+	
+	
+	
+	
 	//Correct Answers set based on question type
 	public void correct_single(String a)
 	{
 		this.answer_single = a;
+	}
+	
+	public String getSingleAnswer() {
+		return answer_single;
 	}
 	
 	
