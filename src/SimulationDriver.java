@@ -90,7 +90,7 @@ public class SimulationDriver {
 		
 		
 		Question q4 = new Multiple();
-		q4.setQuestion("What is your favoeite Food?");
+		q4.setQuestion("What is your favorite Food?");
 		Questions.add(q4);
 		Answers answer_q4 = new Answers();
 		List <String> possible_answers_four = new ArrayList <String> ();
