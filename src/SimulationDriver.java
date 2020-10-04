@@ -54,7 +54,7 @@ public class SimulationDriver {
 		
 		Question q2 = new Single();
 		q2.setQuestion("What is the proper syntax for generating an int random number no greater than 1000 in Java? "
-				+ "\nAssume instance of Random Class has been created as (Random rand = new Random();");
+				+ "\nAssume instance of Random Class has been created as Random rand = new Random();");
 		Questions.add(q2);
 		Answers answer_q2 = new Answers();
 		List <String> possible_answers_two = new ArrayList <String> ();
@@ -71,7 +71,7 @@ public class SimulationDriver {
 		
 		
 		Question q3 = new Multiple();
-		q1.setQuestion("How are you feeling right now?");
+		q3.setQuestion("How are you feeling right now?");
 		Questions.add(q3);
 		
 		Answers answer_q3 = new Answers();
@@ -84,6 +84,7 @@ public class SimulationDriver {
 		
 		answer_q3.answer_choices(possible_answers_three);
 		AnswerChoices.add(answer_q3);
+		answer_q3.correct("A");
 		
 		
 		
@@ -105,11 +106,12 @@ public class SimulationDriver {
 		answer_q4.correct("A");
 		
 		
+		
 		int CorrectAnswers = 0;
-		int Total = Questions.size() + Questions.size();
-		int i = 0;
+		int Total = Questions.size();
+		
 	
-		for ( i = 0; i < Questions.size(); i++ )
+		for ( int i = 0; i < Questions.size(); i++ )
 		{
 			if(i == 0) {
 			
@@ -139,7 +141,7 @@ public class SimulationDriver {
 			
 			if(test == true)
 			{
-				CorrectAnswers++;
+				CorrectAnswers+=1;
 				System.out.println("Correct!");
 				System.out.println("");
 			}

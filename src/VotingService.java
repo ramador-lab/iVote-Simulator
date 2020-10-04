@@ -14,7 +14,7 @@ private Answers answer_type2;
 
 public void Display(Question q1)
 {
-	this.question_type1 = (Single)q1;
+	this.question_type1 = q1;
 	System.out.println(question_type1.getQuestion());
 }
 
