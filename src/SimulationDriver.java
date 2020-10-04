@@ -30,14 +30,13 @@ public class SimulationDriver {
 		VotingService Game1 = new VotingService();
 		
 		
-		List<Question>SingleAnswerQuestion = new ArrayList();
-		List<Question>MultipleAnswerQuestion = new ArrayList();
+		List<Question>Questions = new ArrayList();
 		List<Answers>AnswerChoices = new ArrayList();
 
 		
 		Question q1 = new Single();
 		q1.setQuestion("What was the year span for World War 1?");
-		SingleAnswerQuestion.add(q1);
+		Questions.add(q1);
 		
 		Answers answer_q1 = new Answers();
 		List <String> possible_answers_one = new ArrayList <String> ();
@@ -49,14 +48,14 @@ public class SimulationDriver {
 		
 		answer_q1.answer_choices(possible_answers_one);
 		AnswerChoices.add(answer_q1);
-		answer_q1.correct_single("C");
+		answer_q1.correct("C");
 		
 		
 		
 		Question q2 = new Single();
 		q2.setQuestion("What is the proper syntax for generating an int random number no greater than 1000 in Java? "
 				+ "\nAssume instance of Random Class has been created as (Random rand = new Random();");
-		SingleAnswerQuestion.add(q2);
+		Questions.add(q2);
 		Answers answer_q2 = new Answers();
 		List <String> possible_answers_two = new ArrayList <String> ();
 		possible_answers_two.add("A. int rand_int1 = rand.nextInt(1000);");
@@ -67,14 +66,50 @@ public class SimulationDriver {
 		
 		answer_q2.answer_choices(possible_answers_two);
 		AnswerChoices.add(answer_q2);
-		answer_q1.correct_single("A");
+		answer_q2.correct("A");
+		
+		
+		
+		Question q3 = new Multiple();
+		q1.setQuestion("How are you feeling right now?");
+		Questions.add(q3);
+		
+		Answers answer_q3 = new Answers();
+		List <String> possible_answers_three = new ArrayList <String> ();
+		possible_answers_three.add("A. Happy");
+		possible_answers_three.add("B. Glad");
+		possible_answers_three.add("C. Motivated");
+		possible_answers_three.add("D. Tired");
+		possible_answers_three.add("E. Sad");
+		
+		answer_q3.answer_choices(possible_answers_three);
+		AnswerChoices.add(answer_q3);
+		
+		
+		
+		
+		Question q4 = new Multiple();
+		q4.setQuestion("What is your favoeite Food?");
+		Questions.add(q4);
+		Answers answer_q4 = new Answers();
+		List <String> possible_answers_four = new ArrayList <String> ();
+		possible_answers_four.add("A. Pizza");
+		possible_answers_four.add("B. Hamburger");
+		possible_answers_four.add("C. Ice Cream");
+		possible_answers_four.add("D. Sandwich");
+		possible_answers_four.add("E. Other");
+		
+		
+		answer_q4.answer_choices(possible_answers_four);
+		AnswerChoices.add(answer_q4);
+		answer_q4.correct("A");
 		
 		
 		int CorrectAnswers = 0;
-		int Total = SingleAnswerQuestion.size() + MultipleAnswerQuestion.size();
-		
+		int Total = Questions.size() + Questions.size();
+		int i = 0;
 	
-		for (int i = 0; i < SingleAnswerQuestion.size(); i++ )
+		for ( i = 0; i < Questions.size(); i++ )
 		{
 			if(i == 0) {
 			
@@ -87,7 +122,7 @@ public class SimulationDriver {
 			
 			
 			};
-			Game1.Display_Single(SingleAnswerQuestion.get(i));
+			Game1.Display(Questions.get(i));
 			
 			AnswerChoices.get(i).display_answer_choices();
 			
@@ -99,16 +134,18 @@ public class SimulationDriver {
 			Answers temp = new Answers();
 			temp.UserInput(givenAnswer);
 			student1.Submit_Answer(temp);
-			boolean test = Game1.UserSingleCompare(givenAnswer, AnswerChoices.get(i).getSingleAnswer());
-			System.out.println(test);
+			boolean test = Game1.UserSingleCompare(temp.getUserInput(),AnswerChoices.get(i).getAnswer());
+		
 			
-			if(givenAnswer ==AnswerChoices.get(i).getSingleAnswer());
+			if(test == true)
 			{
 				CorrectAnswers++;
 				System.out.println("Correct!");
 				System.out.println("");
 			}
-			
+			else {
+				System.out.println("Incorrect");
+			}
 			
 			System.out.println(" ");
 			System.out.println("--------------------------------------------------------------------------------------");
@@ -116,6 +153,10 @@ public class SimulationDriver {
 			
 			
 		}
+		
+
+		
+		
 		
 		double score = (CorrectAnswers/Total)*100;
 		

@@ -9,12 +9,12 @@ public class Answers {
 	private List <String> repository = new ArrayList<String>();
 	
 	//Correct Answers that will be compared to submitted answers by the user
-	private String answer_single;
-	private List <String> answer_multiple = new ArrayList<String>();
+	private String answer;
+
 	
 	
-	private String user_single;
-	private List <String> user_multiple = new ArrayList<String>();
+	private String user_input;
+
 	
 	
 	//Will Set the answers that can be selected
@@ -42,28 +42,28 @@ public class Answers {
 	
 	
 	public void UserInput(String a) {
-		this.user_single = a;
+		this.user_input = a;
 	}
 	
 	
+	
+	public String getUserInput() {
+		return user_input;
+	}
 	
 	
 	
 	//Correct Answers set based on question type
-	public void correct_single(String a)
+	public void correct(String a)
 	{
-		this.answer_single = a;
+		this.answer = a;
 	}
 	
-	public String getSingleAnswer() {
-		return answer_single;
+	public String getAnswer() {
+		return answer;
 	}
 	
-	
-	public void correct_multiple(List<String> a2)
-	{
-		this.answer_multiple = a2;
-	}
+
 	
 
 
